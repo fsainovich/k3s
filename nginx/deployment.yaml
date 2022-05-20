@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-flaskenvvar
+  labels:
+    app: flaskenvvar
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flaskenvvar
+  template:
+    metadata:
+      labels:
+        app: flaskenvvar
+    spec:
+      containers:
+      - name: flaskenvvar
+        image: fsainovich/flaskenvvar:0.0.3
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "250m"
+        ports:
+        - containerPort: 5000

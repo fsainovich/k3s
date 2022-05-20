@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-myservicea
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: k3s.fsainovich.tec.br
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: svc-flaskenvvar
+          servicePort: 80
+---
